@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>House Price Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🏠 House Price Prediction</h1>
+
+<p>
+Predict House Prices using Machine Learning
+</p>
+<form method="POST">
+
+<div class="form-grid">
+
+    <input type="number" name="OverallQual" placeholder="Overall Quality" required>
+
+    <input type="number" name="GrLivArea" placeholder="Living Area (sq ft)" required>
+
+    <input type="number" name="GarageCars" placeholder="Garage Cars" required>
+
+    <input type="number" name="GarageArea" placeholder="Garage Area (sq ft)" required>
+
+    <input type="number" name="TotalBsmtSF" placeholder="Total Basement Area" required>
+
+    <input type="number" name="1stFlrSF" placeholder="First Floor Area" required>
+
+    <input type="number" name="2ndFlrSF" placeholder="Second Floor Area" required>
+
+    <input type="number" name="YearBuilt" placeholder="Year Built" required>
+
+    <input type="number" name="FullBath" placeholder="Full Bathrooms" required>
+
+    <input type="number" name="TotRmsAbvGrd" placeholder="Total Rooms Above Ground" required>
+
+    <input type="number" name="LotArea" placeholder="Lot Area" required>
+
+    <input type="number" name="BsmtFinSF1" placeholder="Finished Basement Area" required>
+
+    <input type="number" name="Fireplaces" placeholder="Number of Fireplaces" required>
+
+</div>
+
+<select name="Neighborhood" required>
+    <option value="">Select Neighborhood</option>
+    <option value="NAmes">NAmes</option>
+    <option value="CollgCr">CollgCr</option>
+    <option value="OldTown">OldTown</option>
+    <option value="Edwards">Edwards</option>
+    <option value="Somerst">Somerst</option>
+</select>
+
+<select name="KitchenQual" required>
+    <option value="">Kitchen Quality</option>
+    <option value="Ex">Excellent</option>
+    <option value="Gd">Good</option>
+    <option value="TA">Typical/Average</option>
+    <option value="Fa">Fair</option>
+</select>
+
+<select name="GarageType" required>
+    <option value="">Garage Type</option>
+    <option value="Attchd">Attached</option>
+    <option value="Detchd">Detached</option>
+    <option value="BuiltIn">Built In</option>
+</select>
+
+<select name="GarageFinish" required>
+    <option value="">Garage Finish</option>
+    <option value="Fin">Finished</option>
+    <option value="RFn">Rough Finished</option>
+    <option value="Unf">Unfinished</option>
+</select>
+
+<select name="CentralAir" required>
+    <option value="">Central Air</option>
+    <option value="Y">Yes</option>
+    <option value="N">No</option>
+</select>
+
+<select name="LotShape" required>
+    <option value="">Lot Shape</option>
+    <option value="Reg">Regular</option>
+    <option value="IR1">Slightly Irregular</option>
+    <option value="IR2">Moderately Irregular</option>
+    <option value="IR3">Irregular</option>
+</select>
+
+<select name="RoofStyle" required>
+    <option value="">Roof Style</option>
+    <option value="Gable">Gable</option>
+    <option value="Hip">Hip</option>
+    <option value="Flat">Flat</option>
+</select>
+
+<button type="submit">
+    Predict Price
+</button>
+
+{% if predicted_price %}
+
+<div class="result-card">
+
+    <h2>Predicted House Price</h2>
+
+    <h1>${{ "{:,.2f}".format(predicted_price)  }}</h1>
+
+</div>
+
+{% endif %}
+
+</form>
+
+</div>
+
+</body>
+
+</html>
